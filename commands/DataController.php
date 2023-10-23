@@ -1,0 +1,65 @@
+<?php
+
+namespace app\commands;
+
+use app\models\User;
+use app\models\Category;
+use app\models\Lot;
+use app\models\Bet;
+use Yii;
+use yii\helpers\BaseInflector;
+use yii\console\Controller;
+use yii\console\ExitCode;
+
+class DataController extends Controller
+{
+    const CATEGORIES = [
+        [
+            'name' => 'Category0',
+            'inner_code' => 'NhfHnyfB74HF67gDC6H'
+        ],
+        [
+            'name' => 'Category1',
+            'inner_code' => 'gyvYFTYRXhv6DY7rgv7'
+        ],
+        [
+            'name' => 'Category2',
+            'inner_code' => 'gYTFRXuy7678VCVC5rt'
+        ]
+    ];
+
+    const CLOSING_REASONS = [
+        ['reason' => 'Your reason'],
+        ['reason' => 'Copyright Infringement'],
+        ['reason' => 'Terms of Service Infringement'],
+    ];
+
+    public function actionImport()
+    {
+        $entities = [
+            'category',
+            'closing_reason'
+        ];
+
+        foreach ($entities as $entity) {
+            $classname = '\app\models\\' . (new BaseInflector())->camelize(ucfirst($entity));
+            $entity = (new BaseInflector())->pluralize($entity);
+            $entity = strtoupper($entity);
+
+            print($entity . "\n");
+            foreach (constant("self::$entity") as $entity_item) {
+                $entity = new $classname();
+                foreach ($entity_item as $key => $value) {
+                    if ($key === 'password') {
+                        $entity->password_hash = Yii::$app->security->generatePasswordHash($value);
+                    } else {
+                        $entity->{$key} = $value;
+                    }
+                }
+                $entity->save();
+            }
+        }
+
+        return ExitCode::OK;
+    }
+}

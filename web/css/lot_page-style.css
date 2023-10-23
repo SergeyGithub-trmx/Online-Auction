@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    background-color: azure;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    align-self: flex-start;
+    font-size: 36px;
+}
+
+.wrapper {
+    margin-top: 25px;
+    width: 1000px;
+}
+
+.lot {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #000;
+    padding: 20px;
+}
+
+.lot img, h2 {
+    align-self: center;
+}
+
+.lot h2 {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 18px;
+}
+
+.delete_lot {
+    align-self: flex-end;
+    background-color: rgb(255, 26, 26);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+}

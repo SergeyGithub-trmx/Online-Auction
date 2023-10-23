@@ -1,0 +1,72 @@
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 4, 54);
+    border-top: 3px solid rgb(1, 48, 177);
+    border-bottom: 3px solid rgb(1, 75, 233);
+    box-shadow: 0 5px 10px rgb(0, 0, 0, 0.7);
+    transition: all .4s;
+}
+
+.main-header nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    color: #6fb9ff !important;
+    text-decoration: none;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    width: 100%;
+}
+
+.user-menu li {
+    display: flex;
+}
+
+.user-menu li:not(:first-child) {
+    margin-left: 20px;
+}
+
+.user-menu li:nth-child(2) {
+    margin-left: auto;
+}
+
+.username, .logout-btn {
+    text-decoration: none;
+}
+
+.username {
+    color: #76f6ff;
+}
+
+.logout-btn {
+    color: rgb(247, 12, 12);
+    border: 1px solid rgb(255, 81, 81);
+    border-radius: 5%;
+    padding: 3px;
+}
+
+.logout-btn:hover {
+    color: rgb(202, 11, 11);
+    border-color: rgb(197, 63, 63);
+}
+
+.logout-btn:active {
+    color: rgb(160, 9, 9);
+    border-color: rgb(133, 44, 44);
+}

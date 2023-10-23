@@ -1,0 +1,114 @@
+.login-registration-block .container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-registration-block form {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    padding: 50px 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    background-color: #cfdaff;
+}
+
+.login-registration-block form .text-center {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.login-registration-block form .text-center, .btn-primary {
+    align-self: center;
+}
+
+.control-label {
+    font-weight: bold;
+}
+
+.login-registration-block .item {
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+}
+
+.login-registration-block .create-account, .log-in {
+    user-select: none;
+    border: none;
+    background: #574bff;
+    padding: 8px 16px;
+    margin: 20px 0 10px 0;
+    min-width: 100px;
+    text-align: center;
+
+    font-family: "Vesti";
+    font-size: 18px;
+    color: #fff;
+}
+
+.login-registration-block .create-account:hover, .log-in:hover {
+    cursor: pointer;
+    background: #493fd1;
+    box-shadow: 0 0 0 3px #b1acf0;
+}
+
+.login-registration-block .create-account:active, .log-in:active {
+    background: #3930b1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group:nth-child(4) {
+    margin: 10px 0 10px 0;
+}
+
+.form-group:nth-child(5), .form-group:nth-child(6), .form-group:nth-child(7) {
+    margin-bottom: 10px;
+}
+
+.form-group textarea {
+    resize: none;
+    width: 177px;
+    box-sizing: border-box;
+}
+
+#having-an-account {
+    display: flex;
+    align-items: flex-end;
+    align-self: center;
+}
+
+a, .already-have-an-account {
+    font-family: "Russia";
+    margin-left: 4px;
+}
+
+.already-have-an-account {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+a:not(.logo) {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgb(24, 113, 197);
+}
+
+a:hover {
+    color: rgb(35, 89, 170);
+}
+
+a:active {
+    color: rgb(29, 31, 133);
+}
+
+p {
+    margin: 0;
+}

@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "Russia";
+    src: url("fonts/russia.ttf") format("truetype"),
+    url("fonts/russia_bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vesti";
+    src: url("fonts/vestisans-regular.ttf") format("truetype");
+}
+
+:root {
+    --main-header-height: 56px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    font-family: "Russia";
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main {
+    height: calc(100vh - 50px);
+}
+
+.container {
+    width: 1180px;
+    margin: 0 auto;
+    padding: 0 15px;
+}

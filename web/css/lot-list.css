@@ -1,0 +1,59 @@
+main {
+    flex-direction: column;
+    background-color: rgb(240, 255, 253);
+    margin-top: calc(var(--main-header-height) + 50px);
+}
+
+.lot-list h1 {
+    font-size: 30px;
+}
+
+.lot-list .lots {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.lot-list .lot_info {
+    width: 250px;
+    margin: 15px 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px #1f1f1f;
+    box-sizing: border-box;
+    border-radius: 5px;
+    transition: 0.2s all;
+}
+
+.lot-list .lot_info:hover {
+    background-color: rgb(242, 247, 248);
+    box-shadow: 0 0 20px #000;
+}
+
+.lot-list .lot_info:active {
+    background-color: rgb(229, 233, 233);
+}
+
+.lot-list .lot_info > a {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.lot-list .lot_info:not(:nth-child(4n)) {
+    margin-right: 60px;
+}
+
+.lot-list .lot_info img {
+    order: -1;
+    object-fit: contain;
+    object-position: center;
+}
+
+.lot-list .lot_info span {
+    font-weight: bold;
+}
+
+.lot-list .lot_info > a * {
+    color: #000;
+}
