@@ -14,9 +14,6 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     height: 100vh;
     font-family: "Russia";
     background-size: cover;
@@ -27,8 +24,8 @@ main {
     height: calc(100vh - 50px);
 }
 
-.container {
+/* .container {
     width: 1180px;
     margin: 0 auto;
     padding: 0 15px;
-}
+} */

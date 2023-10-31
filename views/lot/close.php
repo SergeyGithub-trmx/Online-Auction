@@ -7,7 +7,7 @@ use app\assets\CloseLotAsset;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap5\ActiveForm;
+use yii\widgets\ActiveForm;
 
 $this->title = 'Закрыть лот | Онлайн-аукцион';
 CloseLotAsset::register($this);

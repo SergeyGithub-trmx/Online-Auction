@@ -1,11 +1,11 @@
-.login-registration-block .container {
+.login-registration-block .my-own-container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-registration-block form {
+/* .login-registration-block form {
     display: flex;
     flex-direction: column;
     max-width: 800px;
@@ -83,7 +83,7 @@
     align-self: center;
 }
 
-a, .already-have-an-account {
+.already-have-an-account {
     font-family: "Russia";
     margin-left: 4px;
 }
@@ -93,8 +93,7 @@ a, .already-have-an-account {
     font-size: 16px;
 }
 
-a:not(.logo) {
-    margin-top: 15px;
+/* a:not(.logo) {
     font-size: 16px;
     font-weight: 700;
     text-decoration: none;
@@ -111,4 +110,4 @@ a:active {
 
 p {
     margin: 0;
-}
+} */

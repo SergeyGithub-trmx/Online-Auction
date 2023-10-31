@@ -6,7 +6,7 @@ use app\assets\CreateLotAsset;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap5\ActiveForm;
+use yii\widgets\ActiveForm;
 
 $this->title = 'Добавить лот | Онлайн-аукцион';
 CreateLotAsset::register($this);
