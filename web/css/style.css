@@ -14,15 +14,14 @@
 }
 
 body {
-    height: 100vh;
-    font-family: "Russia";
+    font-family: "Russia"!important;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-main {
-    height: calc(100vh - 50px);
-}
+/* main {
+    min-height: calc(100vh - 50px);
+} */
 
 /* .container {
     width: 1180px;

@@ -13,40 +13,53 @@ RegisterAsset::register($this);
 $this->title = Yii::$app->name . ' | Регистрация';
 
 ?>
-<section class="login-registration-block">
+<section class="d-flex align-items-center" style="min-height: 100vh;">
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
 
-        <?php $form = ActiveForm::begin([
-            'action' => Url::to(['user/register']),
-            'method' => 'post',
-            // 'enableAjaxValidation' => true
-            // 'options' => [
-            //     'class' => 'value1'
-            // ]
-            // 'fieldConfig' => [
-            //     'options' => ['class' => 'value0'],
-            //     'inputOptions' => ['class' => 'another_value'],
-            //     'labelOptions' => ['class' => 'fgsdfvsvdftdsfy'],
-            //     'errorOptions' => ['class' => 'value_for_errors'],
-            //     'template' => '{label}{input}{error}'
-            // ],
-        ]); ?>
-            <h2 class="text-center">Регистрация</h2>
+                <?php $form = ActiveForm::begin([
+                    'action' => Url::to(['user/register']),
+                    'method' => 'post',
+                    // 'enableAjaxValidation' => true
+                    'options' => [
+                        'class' => 'p-4',
+                        'style' => 'background-color: #cfdaff;',
+                    ],
+                    'fieldConfig' => [
+                        'options' => ['class' => 'mb-3'],
+                        'inputOptions' => ['class' => 'form-control'],
+                        'labelOptions' => [
+                            'class' => 'form-label',
+                            'style' => 'font-weight: bold',
+                        ],
+                        'errorOptions' => [
+                            'class' => 'form-text invalid-feedback',
+                            'style' => 'display: block; font-style: italic; font-weight: bold;',
+                        ],
+                        'template' => '{label}{input}{error}'
+                    ],
+                ]); ?>
+                    <h2 class="text-center">Регистрация</h2>
 
-            <?= $form->field($model, 'username')->textInput() ?>
-            <?= $form->field($model, 'password')->input('password') ?>
-            <?= $form->field($model, 'password_repeat')->input('password') ?>
-            <?= $form->field($model, 'email')->input('email') ?>
-            <?= $form->field($model, 'contacts')->textArea() ?>
-            <?= $form->field($model, 'avatar')->fileInput() ?>
+                    <?= $form->field($model, 'username')->textInput() ?>
+                    <?= $form->field($model, 'password')->input('password') ?>
+                    <?= $form->field($model, 'password_repeat')->input('password') ?>
+                    <?= $form->field($model, 'email')->input('email') ?>
+                    <?= $form->field($model, 'contacts')->textArea() ?>
+                    <?= $form->field($model, 'avatar')->fileInput() ?>
 
-            <?= Html::submitButton('Вперёд!', ['class' => 'btn btn-primary btn-block create-account']) ?>
+                    <div class="d-grid">
+                        <?= Html::submitInput('Вперёд!', ['class' => 'btn btn-primary']) ?>
+                    </div>
 
-            <div id="having-an-account">
-                <p>Уже есть аккаунт?</p>
-                <a class="already-have-an-account" href="<?= Url::to(['user/login']) ?>">Войти.</a>
+                    <div class="d-flex justify-content-center mt-4">
+                        <p>Уже есть аккаунт?</p>
+                        <a class="ms-1" href="<?= Url::to(['user/login']) ?>">Войти.</a>
+                    </div>
+                <?php ActiveForm::end(); ?>
+
             </div>
-        <?php ActiveForm::end(); ?>
-
-    </div>    
+        </div>
+    </div>
 </section>

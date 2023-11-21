@@ -13,7 +13,7 @@ LoginAsset::register($this);
 $this->title = Yii::$app->name . ' | Вход';
 
 ?>
-<section class="d-flex align-items-center h-100">
+<section class="d-flex align-items-center" style="min-height: 100vh;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
@@ -29,10 +29,13 @@ $this->title = Yii::$app->name . ' | Вход';
                     'fieldConfig' => [
                         'options' => ['class' => 'mb-3'],
                         'inputOptions' => ['class' => 'form-control'],
-                        'labelOptions' => ['class' => 'form-label'],
+                        'labelOptions' => [
+                            'class' => 'form-label',
+                            'style' => 'font-weight: bold;'
+                        ],
                         'errorOptions' => [
                             'class' => 'form-text invalid-feedback',
-                            'style' => 'display: block;',
+                            'style' => 'display: block; font-style: italic; font-weight: bold;',
                         ],
                         'template' => '{label}{input}{error}' 
                     ],

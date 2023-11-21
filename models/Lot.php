@@ -57,7 +57,7 @@ class Lot extends ActiveRecord
             ['deadline', 'string'],
 
             ['bet_step', 'required'],
-            ['bet_step', 'integer', 'min' => 50],
+            ['bet_step', 'integer', 'min' => 1],
 
             ['closing_reason', 'trim'],
             ['closing_reason', 'string'],

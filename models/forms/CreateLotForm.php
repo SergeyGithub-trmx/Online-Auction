@@ -2,9 +2,9 @@
 
 namespace app\models\forms;
 
+use yii\base\Model;
 use app\models\Category;
 use app\models\Lot;
-use yii\base\Model;
 
 class CreateLotForm extends Model
 {
@@ -15,6 +15,9 @@ class CreateLotForm extends Model
     public $starting_price;
     public $deadline;
     public $bet_step;
+
+    const B_PER_MB = 1024 ** 2;
+    const MAX_FILE_SIZE = 25;
 
     public function rules(): array
     {
@@ -33,16 +36,21 @@ class CreateLotForm extends Model
             ['description', 'string', 'max' => 512],
 
             ['image', 'required'],
-            ['image', 'file', 'extensions' => 'jpg, jpeg, png, bmp'],
+            ['image', 'file', 'extensions' => 'jpg, jpeg, png, bmp', 'maxSize' => self::B_PER_MB * self::MAX_FILE_SIZE],
 
             ['starting_price', 'required'],
             ['starting_price', 'integer', 'min' => 10],
 
             ['deadline', 'required'],
             ['deadline', 'string'],
+            ['deadline', 'date', 
+                'format' => 'php:Y-m-d', 
+                'min' => strtotime('tomorrow'), 
+                'tooSmall' => 'Запрещено ставить дату раньше, чем завтра.'
+            ],
 
             ['bet_step', 'required'],
-            ['bet_step', 'integer', 'min' => 50],
+            ['bet_step', 'integer', 'min' => 1],
         ];
     }
 

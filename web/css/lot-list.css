@@ -1,7 +1,11 @@
+body {
+    min-height: auto;
+    background-color: rgb(240, 248, 255);
+}
+
 main {
+    min-height: auto;
     flex-direction: column;
-    background-color: rgb(240, 255, 253);
-    margin-top: calc(var(--main-header-height) + 50px);
 }
 
 .lot-list h1 {

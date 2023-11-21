@@ -1,13 +1,6 @@
 body {
     margin: 0;
-    background-color: azure;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: rgb(240, 248, 255);
 }
 
 h1 {
@@ -24,9 +17,8 @@ h1 {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    border: 1px solid #000;
     border-radius: 5px;
-    box-shadow: 0 0 15px #000;
+    box-shadow: #00000080 0 0 10px 0;
     padding: 20px;
 }
 

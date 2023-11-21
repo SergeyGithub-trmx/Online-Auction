@@ -33,8 +33,8 @@ class CloseLotForm extends Model
     {
         return [
             'lot_id' => 'hidden',
-            'closing_reason' => 'your own reason',
-            'closing_reason_id' => 'select reason'
+            'closing_reason' => 'Опишите свою причину',
+            'closing_reason_id' => 'Выберите причину'
         ];
     }
 }

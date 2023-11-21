@@ -37,7 +37,7 @@ class SiteController extends Controller
         $query = Lot::find();
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
-        $pages->setPageSize(2);
+        $pages->setPageSize(10);
         $lots = $query->offset($pages->offset)->limit($pages->limit)->all();
 
         return $this->render('index', [

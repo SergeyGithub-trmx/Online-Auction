@@ -12,31 +12,52 @@ $this->title = 'Добавить лот | Онлайн-аукцион';
 CreateLotAsset::register($this);
 
 ?>
-<?php $form = ActiveForm::begin([
-    'action' => Url::to(['lot/create']),
-    'method' => 'post',
-    // 'enableAjaxValidation' => true
-    'options' => [
-        'enctype' => 'multipart/form-data'
-        // 'class' => 'value1'
-    ]
-    // 'fieldConfig' => [
-    //     'options' => ['class' => 'value0'],
-    //     'inputOptions' => ['class' => 'another_value'],
-    //     'labelOptions' => ['class' => 'fgsdfvsvdftdsfy'],
-    //     'errorOptions' => ['class' => 'value_for_errors'],
-    //     'template' => '{label}{input}{error}'
-    // ],
-]); ?>
-    <h2 class="text-center">Добавить лот</h2>
+<section class="lot-adding-section" style="margin-top: 100px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <?php $form = ActiveForm::begin([
+                    'action' => Url::to(['lot/create']),
+                    'method' => 'post',
+                    'enableAjaxValidation' => false,
+                    'options' => [
+                        'class' => 'p-3 d-flex',
+                        'enctype' => 'multipart/form-data',
+                        'novalidate' => true,
+                        'style' => '
+                            flex-direction: column;
+                            background-color: #cfdaff;
+                            border-radius: 15px;
+                            box-shadow: #00000080 0 0 10px 0;
+                        ',
+                    ],
+                    'fieldConfig' => [
+                        'options' => ['class' => 'mb-3'],
+                        'inputOptions' => ['class' => 'form-control'],
+                        'labelOptions' => [
+                            'class' => 'form-label',
+                            'style' => 'font-weight: bold;'
+                        ],
+                        'errorOptions' => [
+                            'class' => 'form-text invalid-feedback',
+                            'style' => 'display: block; font-style: italic; font-weight: bold;',
+                        ],
+                        'template' => '{label}{input}{error}' 
+                    ],
+                ]); ?>
+                    <h2 class="text-center">Добавить лот</h2>
 
-    <?= $form->field($model, 'name')->textInput() ?>
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map($categories, 'id', 'name')) ?>
-    <?= $form->field($model, 'description')->textArea(['style' => 'resize: vertical;']) ?>
-    <?= $form->field($model, 'image')->input('file', ['accept' => 'image/jpg, image/jpeg, image/png, image/bmp']) ?>
-    <?= $form->field($model, 'starting_price')->input('number', ['min' => '10']) ?>
-    <?= $form->field($model, 'deadline')->input('date') ?>
-    <?= $form->field($model, 'bet_step')->input('number', ['min' => '50']) ?>
+                    <?= $form->field($model, 'name')->textInput() ?>
+                    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map($categories, 'id', 'name')) ?>
+                    <?= $form->field($model, 'description')->textArea(['style' => 'resize: vertical;']) ?>
+                    <?= $form->field($model, 'image')->fileInput(['accept' => 'image/jpg, image/jpeg, image/png, image/bmp', 'class' => 'form-control']) ?>
+                    <?= $form->field($model, 'starting_price')->input('number', ['min' => 10]) ?>
+                    <?= $form->field($model, 'deadline', ['enableAjaxValidation' => true])->input('date') ?>
+                    <?= $form->field($model, 'bet_step')->input('number', ['min' => 1]) ?>
 
-    <?= Html::submitButton('Добавить', ['class' => 'btn btn-primary btn-block create-account']) ?>
-<?php ActiveForm::end(); ?>
+                    <?= Html::submitInput('Добавить', ['class' => 'btn btn-primary']) ?>
+                <?php ActiveForm::end(); ?>
+            </div>
+        </div>
+    </div>
+</section>

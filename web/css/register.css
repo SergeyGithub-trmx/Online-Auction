@@ -1,3 +1,7 @@
 body {
     background-image: url("pictures/vesti_back.jpg");
 }
+
+#registerform-avatar {
+    margin-left: 10px;
+}
