@@ -107,10 +107,19 @@ class LotController extends Controller
                 return $this->redirect(['lot/view', 'lot_id' => $lot_id]);
             }
         }
-        
+
+        $current_price = $min_summary = $lot->starting_price;
+
+        if (count($lot->bets)) {
+            $current_price = max(array_column($lot->bets, 'summary'));
+            $min_summary = $current_price + $lot->bet_step;
+        }
+
         return $this->render('view', [
             'lot' => $lot,
             'model' => $model,
+            'current_price' => number_format($current_price, thousands_separator: ' '),
+            'min_summary' => number_format($min_summary, thousands_separator: ' '),
         ]);
     }
 

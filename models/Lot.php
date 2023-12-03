@@ -18,8 +18,10 @@ use yii\db\ActiveRecord;
  * @property int $bet_step
  * @property string $closing_reason
  * @property int $closing_reason_id
- * 
+ *
+ * @property Bet[] $bets
  * @property Category $category
+ * @property User $user
  */
 class Lot extends ActiveRecord
 {
@@ -66,6 +68,11 @@ class Lot extends ActiveRecord
             ['closing_reason_id', 'integer'],
             ['closing_reason_id', 'exist', 'targetClass' => ClosingReason::class, 'targetAttribute' => 'id'],
         ];
+    }
+
+    public function getBets(): ActiveQuery
+    {
+        return $this->hasMany(Bet::class, ['lot_id' => 'id']);
     }
 
     public function getCategory(): ActiveQuery

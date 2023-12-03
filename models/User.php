@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
@@ -14,6 +15,8 @@ use yii\web\IdentityInterface;
  * @property string $password_hash
  * @property string $contacts
  * @property string $avatar_path
+ *
+ * @property Bet[] $bets
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -48,6 +51,11 @@ class User extends ActiveRecord implements IdentityInterface
             [['avatar_path'], 'string', 'max' => 128],
             [['avatar_path'], 'unique', 'targetClass' => self::class, 'targetAttribute' => 'avatar_path']
         ];
+    }
+
+    public function getBets(): ActiveQuery
+    {
+        return $this->hasMany(Bet::class, ['user_id' => 'id']);
     }
 
     /**

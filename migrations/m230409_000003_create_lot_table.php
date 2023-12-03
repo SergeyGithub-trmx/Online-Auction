@@ -24,7 +24,8 @@ class m230409_000003_create_lot_table extends Migration
             'deadline' => $this->date()->notNull(),
             'bet_step' => $this->integer()->notNull(),
             'closing_reason' => $this->string(256)->null(),
-            'closing_reason_id' => $this->integer()->unsigned()->null()
+            'closing_reason_id' => $this->integer()->unsigned()->null(),
+            'winner_bet_id' => $this->integer()->unsigned()->null()
         ]);
 
         // adding foreign key to table 'user'

@@ -41,7 +41,7 @@ use yii\helpers\Url;
 
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="<?= Url::to(['user/profile']) ?>">Мой профиль</a></li>
-                                <li><a class="dropdown-item" href="#">Мои ставки</a></li>
+                                <li><a class="dropdown-item" href="<?= Url::to(['/my-bets']) ?>">Мои ставки</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="<?= Url::to(['user/logout']) ?>">Выход</a></li>
                             </ul>

@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
+use yii\symfonymailer\Logger;
 
 /**
  * @property int $id
@@ -17,4 +19,15 @@ class Bet extends ActiveRecord
     {
         return '{{%bet}}';
     }
+
+    public function getUser(): ActiveQuery
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    public function getLot(): ActiveQuery
+    {
+        return $this->hasOne(Lot::class, ['id' => 'lot_id']);
+    }
+
 }

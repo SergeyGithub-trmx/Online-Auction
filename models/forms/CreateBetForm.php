@@ -25,6 +25,8 @@ class CreateBetForm extends Model
 
             ['summary', 'required'],
             ['summary', 'integer', 'min' => 1],
+            ['summary', 'isNotOwner'],
+            ['summary', 'validateSummary'],
         ];
     }
 
@@ -33,5 +35,33 @@ class CreateBetForm extends Model
         return [
             'summary' => 'Cтавка',
         ];
+    }
+
+    public function isNotOwner($attr, $params): void
+    {
+        if (!$this->hasErrors()) {
+            $lot = Lot::findOne($this->lot_id);
+
+            if ($this->user_id === $lot->user_id) {
+                $this->addError($attr, 'Нельзя делать ставку на свой лот.');
+            }
+        }
+    }
+
+    public function validateSummary($attr, $params): void
+    {
+        if (!$this->hasErrors()) {
+            $lot = Lot::findOne($this->lot_id);
+            $current_price = $min_summary = $lot->starting_price;
+
+            if (count($lot->bets)) {
+                $current_price = max(array_column($lot->bets, 'summary'));
+                $min_summary = $current_price + $lot->bet_step;
+            }
+
+            if ($this->summary < $min_summary) {
+                $this->addError($attr, 'Нельзя делать ставку ниже минимальной.');
+            }
+        }
     }
 }

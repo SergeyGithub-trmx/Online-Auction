@@ -55,7 +55,9 @@ $config = [
                 '/profile' => 'user/profile',
                 '/lot/create' => 'lot/create',
                 '/lot/<lot_id:\d+>' => 'lot/view',
-                '/lot/close/<lot_id:\d+>' => 'lot/close'
+                '/lot/close/<lot_id:\d+>' => 'lot/close',
+                '/my-bets' => 'bet/list',
+                '/define-winner' => 'bet/define-winner'
             ],
         ],
     ],

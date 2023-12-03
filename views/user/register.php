@@ -24,7 +24,7 @@ $this->title = Yii::$app->name . ' | Регистрация';
                     // 'enableAjaxValidation' => true
                     'options' => [
                         'class' => 'p-4',
-                        'style' => 'background-color: #cfdaff;',
+                        'style' => 'background-color: #cfdaff; border-radius: 15px; box-shadow: #00000080 0 0 10px 0;',
                     ],
                     'fieldConfig' => [
                         'options' => ['class' => 'mb-3'],

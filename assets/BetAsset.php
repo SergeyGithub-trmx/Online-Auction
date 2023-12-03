@@ -4,13 +4,13 @@ namespace app\assets;
 
 use yii\web\AssetBundle;
 
-class LoginAsset extends AssetBundle
+class BetAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    
+
     public $css = [
-        'css/login-registration.css',
+
     ];
     public $js = [];
     public $depends = [
