@@ -5,7 +5,6 @@ namespace app\controllers;
 use app\models\Category;
 use app\models\ClosingReason;
 use app\models\Lot;
-use app\models\User;
 use app\models\forms\CreateBetForm;
 use app\models\forms\CloseLotForm;
 use app\models\forms\CreateLotForm;
@@ -14,27 +13,13 @@ use app\services\LotService;
 use Yii;
 use yii\filters\AccessControl;
 use yii\widgets\ActiveForm;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UploadedFile;
 
-class LotController extends Controller
+class LotController extends BaseController
 {
-    public User $user;
     const USER_REASON_ID = 1;
-
-    public function beforeAction($action): bool
-    {
-        if (!parent::beforeAction($action)) {
-            return false;
-        }
-
-        $this->layout = 'main';
-        $this->user = User::findOne(Yii::$app->user->id);
-
-        return true;
-    }
 
     public function behaviors(): array
     {
@@ -49,7 +34,7 @@ class LotController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['close'],
+                        'actions' => ['close2'],
                         'roles' => ['@'],
                         'matchCallback' => function () {
                             $lot = Lot::findOne(Yii::$app->request->get('lot_id'));
@@ -115,11 +100,14 @@ class LotController extends Controller
             $min_summary = $current_price + $lot->bet_step;
         }
 
+        $max_summary = $min_summary + CreateBetForm::ACCEPTABLE_BET_RANGE;
+
         return $this->render('view', [
             'lot' => $lot,
             'model' => $model,
             'current_price' => number_format($current_price, thousands_separator: ' '),
             'min_summary' => number_format($min_summary, thousands_separator: ' '),
+            'max_summary' => number_format($max_summary, thousands_separator: ' ')
         ]);
     }
 

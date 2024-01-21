@@ -4,12 +4,7 @@ body {
 }
 
 main {
-    min-height: auto;
     flex-direction: column;
-}
-
-.lot-list h1 {
-    font-size: 30px;
 }
 
 .lot-list .lots {

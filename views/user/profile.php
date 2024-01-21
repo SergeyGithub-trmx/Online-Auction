@@ -5,6 +5,8 @@
 use app\assets\ProfileAsset;
 
 ProfileAsset::register($this);
+$this->title = Yii::$app->name . ' | Профиль';
+
 
 ?>
 <div class="user-card">

@@ -57,7 +57,9 @@ $config = [
                 '/lot/<lot_id:\d+>' => 'lot/view',
                 '/lot/close/<lot_id:\d+>' => 'lot/close',
                 '/my-bets' => 'bet/list',
-                '/define-winner' => 'bet/define-winner'
+                '/define-winner' => 'bet/define-winner',
+                '/category' => 'site/category',
+                '/search' => 'site/search'
             ],
         ],
     ],

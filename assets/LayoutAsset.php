@@ -10,9 +10,7 @@ class LayoutAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
-        // 'css/normalize.css',
         'css/style.css',
-        // 'css/main-header.css',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css',
     ];
     public $js = [

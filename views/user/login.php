@@ -23,8 +23,8 @@ $this->title = Yii::$app->name . ' | Вход';
                     'method' => 'post',
                     // 'enableAjaxValidation' => true
                     'options' => [
-                        'class' => 'p-4',
-                        'style' => 'background-color: #cfdaff; border-radius: 15px; box-shadow: #00000080 0 0 10px 0;',
+                        'class' => 'p-4 bg-primary-subtle',
+                        // 'style' => '',
                     ],
                     'fieldConfig' => [
                         'options' => ['class' => 'mb-3'],
@@ -37,10 +37,10 @@ $this->title = Yii::$app->name . ' | Вход';
                             'class' => 'form-text invalid-feedback',
                             'style' => 'display: block; font-style: italic; font-weight: bold;',
                         ],
-                        'template' => '{label}{input}{error}' 
+                        'template' => '{label}{input}{error}'
                     ],
                 ]); ?>
-                    <h2 class="text-center">Вход</h2>
+                    <h1 class="text-center fs-2">Вход</h1>
 
                     <?= $form->field($model, 'username')->textInput() ?>
                     <?= $form->field($model, 'password')->input('password') ?>
@@ -51,7 +51,7 @@ $this->title = Yii::$app->name . ' | Вход';
 
                     <div class="d-flex justify-content-center mt-4">
                         <p>Ещё нет аккаунта?</p>
-                        <a class="ms-1" href="<?= Url::to(['user/register']) ?>">Создать.</a>
+                        <a class="ms-1 text-decoration-none" href="<?= Url::to(['user/register']) ?>">Создать.</a>
                     </div>
                 <?php ActiveForm::end(); ?>
 

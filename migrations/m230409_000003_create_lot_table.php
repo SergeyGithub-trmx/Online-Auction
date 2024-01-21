@@ -57,6 +57,8 @@ class m230409_000003_create_lot_table extends Migration
             'id',
             'CASCADE'
         );
+
+        $this->execute('ALTER TABLE lot ADD FULLTEXT INDEX idx_name (name)');
     }
 
     /**

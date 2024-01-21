@@ -3,11 +3,6 @@ body {
     background-color: rgb(240, 248, 255);
 }
 
-h1 {
-    align-self: flex-start;
-    font-size: 36px;
-}
-
 .wrapper {
     margin-top: 25px;
     width: 1000px;

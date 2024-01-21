@@ -5,6 +5,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 
 ?>
 <header>
@@ -18,15 +19,26 @@ use yii\helpers\Url;
 
                 <?php if (!Yii::$app->user->isGuest): ?>
                     <search class="ms-auto">
-                        <form class="d-flex" role="search">
-                            <input
-                                class="form-control me-2 bg-primary-subtle"
-                                type="search"
-                                placeholder="Поиск на сайте"
-                                aria-label="Search"
-                                style="width: 300px;"
-                            >
-                        </form>
+
+                        <?php $form = ActiveForm::begin([
+                            'action' => Url::to(['site/search']),
+                            'method' => 'get',
+                            'enableAjaxValidation' => false,
+                            'options' => [
+                                'class' => 'd-flex',
+                            ],
+                            'fieldConfig' => [
+                                'inputOptions' => ['class' => 'form-control me-2 bg-primary-subtle'],
+                                'template' => '{input}'
+                            ],
+                        ]); ?>
+
+                        <?= $form
+                            ->field($this->context->search_model, 'req')
+                            ->input('search', ['value' => $this->context->search_model->req, 'placeholder' => 'Поиск на сайте', 'style' => 'width: 300px;']) ?>
+
+                        <?php ActiveForm::end(); ?>
+
                     </search>
                     <a class="btn btn-outline-primary ms-4" href="<?= Url::to(['lot/create']) ?>">Добавить лот</a>
                     <ul class="navbar-nav mb-2 mb-lg-0 ms-4">
@@ -45,6 +57,21 @@ use yii\helpers\Url;
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="<?= Url::to(['user/logout']) ?>">Выход</a></li>
                             </ul>
+                        </li>
+                    </ul>
+                <?php else: ?>
+                    <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link<?= parse_url(Url::canonical())['path'] === '/login' ? ' active' : '' ?>"
+                                href="<?= Url::to(['user/login']) ?>"
+                            >Вход</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link<?= parse_url(Url::canonical())['path'] === '/register' ? ' active' : '' ?>"
+                                href="<?= Url::to(['user/register']) ?>"
+                            >Регистрация</a>
                         </li>
                     </ul>
                 <?php endif; ?>

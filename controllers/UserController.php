@@ -2,20 +2,18 @@
 
 namespace app\controllers;
 
-use Yii;
-use yii\web\Controller;
-use yii\web\UploadedFile;
-use yii\filters\AccessControl;
 use app\models\forms\RegisterForm;
 use app\models\forms\LoginForm;
 use app\models\User;
 use app\services\UserService;
+use Yii;
+use yii\filters\AccessControl;
+use yii\web\Response;
+use yii\web\UploadedFile;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
-    public $user;
-
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'access' => [
@@ -28,7 +26,7 @@ class UserController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'profile'],
+                        'actions' => ['logout', 'profile2'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -36,7 +34,7 @@ class UserController extends Controller
         ];
     }
 
-    public function actionLogin()
+    public function actionLogin(): Response|string
     {
         $this->layout = 'main';
         $login_form = new LoginForm();
@@ -57,39 +55,34 @@ class UserController extends Controller
         ]);
     }
 
-    public function actionLogout()
+    public function actionLogout(): Response|string
     {
         Yii::$app->user->logout();
-        
         return $this->goHome();
     }
 
-    public function actionProfile()
+    public function actionProfile(): string
     {
-        $this->layout = 'main';
-        $this->user = User::findOne(Yii::$app->user->id);
-
         return $this->render('profile');
     }
 
-    public function actionRegister()
+    public function actionRegister(): Response|string
     {
-        $this->layout = 'main';
-        $register_form = new RegisterForm();
+        $model = new RegisterForm();
         
         if (Yii::$app->request->isPost) {
-            $register_form->load(Yii::$app->request->post());
-            $register_form->avatar = UploadedFile::getInstance($register_form, 'avatar');
+            $model->load(Yii::$app->request->post());
+            $model->avatar = UploadedFile::getInstance($model, 'avatar');
     
-            if ($register_form->validate()) {
-                if ((new UserService())->create($register_form)) {
+            if ($model->validate()) {
+                if ((new UserService())->create($model)) {
                     return $this->redirect(['user/login']);
                 }
             }
         }
     
         return $this->render('register', [
-            'model' => $register_form,
+            'model' => $model,
         ]);
     }
 }

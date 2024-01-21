@@ -15,17 +15,25 @@ class DataController extends Controller
 {
     const CATEGORIES = [
         [
-            'name' => 'Category0',
-            'inner_code' => 'NhfHnyfB74HF67gDC6H'
+            'name' => 'Бытовая техника',
+            'inner_code' => 'home_appliances'
         ],
         [
-            'name' => 'Category1',
-            'inner_code' => 'gyvYFTYRXhv6DY7rgv7'
+            'name' => 'Смартфоны и фототехника',
+            'inner_code' => 'smartphones_photo'
         ],
         [
-            'name' => 'Category2',
-            'inner_code' => 'gYTFRXuy7678VCVC5rt'
-        ]
+            'name' => 'ТВ, консоли и аудио',
+            'inner_code' => 'tv_consoles_audio'
+        ],
+        [
+            'name' => 'ПК, ноутбуки и периферия',
+            'inner_code' => 'pc_laptops'
+        ],
+        [
+            'name' => 'Комплектующие для ПК',
+            'inner_code' => 'pc_accessories'
+        ],
     ];
 
     const CLOSING_REASONS = [

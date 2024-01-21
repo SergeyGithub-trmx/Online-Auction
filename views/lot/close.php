@@ -9,8 +9,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Закрыть лот | Онлайн-аукцион';
 CloseLotAsset::register($this);
+$this->title = Yii::$app->name . ' | Закрыть лот';
 
 ?>
 <section class="lot-closing-section" style="display: flex; align-items: center; min-height: 100vh;">

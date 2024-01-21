@@ -23,8 +23,8 @@ $this->title = Yii::$app->name . ' | Регистрация';
                     'method' => 'post',
                     // 'enableAjaxValidation' => true
                     'options' => [
-                        'class' => 'p-4',
-                        'style' => 'background-color: #cfdaff; border-radius: 15px; box-shadow: #00000080 0 0 10px 0;',
+                        'class' => 'p-4 bg-primary-subtle',
+                    //  'style' => '',
                     ],
                     'fieldConfig' => [
                         'options' => ['class' => 'mb-3'],
@@ -55,7 +55,7 @@ $this->title = Yii::$app->name . ' | Регистрация';
 
                     <div class="d-flex justify-content-center mt-4">
                         <p>Уже есть аккаунт?</p>
-                        <a class="ms-1" href="<?= Url::to(['user/login']) ?>">Войти.</a>
+                        <a class="ms-1 text-decoration-none" href="<?= Url::to(['user/login']) ?>">Войти.</a>
                     </div>
                 <?php ActiveForm::end(); ?>
 

@@ -1,30 +1,43 @@
 @font-face {
-    font-family: "Russia";
-    src: url("fonts/russia.ttf") format("truetype"),
-    url("fonts/russia_bold.ttf") format("truetype");
+    font-family: 'Russia';
+    src: url('fonts/russia.ttf') format('truetype');
+    font-weight: 400;
 }
 
 @font-face {
-    font-family: "Vesti";
-    src: url("fonts/vestisans-regular.ttf") format("truetype");
+    font-family: 'Russia';
+    src: url('fonts/russia_bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Vesti';
+    src: url('fonts/vestisans-regular.ttf') format('truetype');
+    font-weight: 400;
 }
 
 :root {
-    --main-header-height: 56px;
+    --main-header-height: 72px;
+    --main-footer-height: 195.5px;
+    --section-margin-top: 140px;
 }
 
 body {
-    font-family: "Russia"!important;
+    font-family: 'Russia' !important;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-/* main {
-    min-height: calc(100vh - 50px);
-} */
+.section-my {
+    margin-top: var(--section-margin-top);
+    margin-bottom: calc(var(--section-margin-top) - var(--main-header-height));
+}
 
-/* .container {
-    width: 1180px;
-    margin: 0 auto;
-    padding: 0 15px;
-} */
+.section-py {
+    padding-top: var(--section-margin-top);
+    padding-bottom: calc(var(--section-margin-top) - var(--main-header-height));
+}
+
+.section-min-height {
+    min-height: calc(100vh - var(--main-footer-height));
+}

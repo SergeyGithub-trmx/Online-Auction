@@ -6,26 +6,25 @@
 /** @var app\models\forms\CreateBetForm $model */
 /** @var string $current_price */
 /** @var string $min_summary */
+/** @var string $max_summary */
 
 use app\assets\LotAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
-$this->registerCssFile('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
 LotAsset::register($this);
-
-const USER_REASON_ID = 1;
+$this->title = Yii::$app->name . ' | ' . Html::encode($lot->name);
 
 ?>
-<section class="lot-view" style="margin-top: 95px">
+<section class="lot-view section-py section-min-height">
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1><?= Html::encode($lot->name) ?></h1>
+                <h1 class="fs-2"><?= Html::encode($lot->name) ?></h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-8">
                 <div class="card">
                     <img
@@ -37,7 +36,15 @@ const USER_REASON_ID = 1;
                     >
                     <div class="card-body">
                         <p class="card-text mb-0">Категория: <?= Html::encode($lot->category->name) ?></p>
-                        <p class="card-text">Стартовая цена: <?= Html::encode($lot->starting_price) ?> руб.</p>
+                        <p class="card-text">
+                            Стартовая цена: <?= number_format(Html::encode($lot->starting_price), thousands_separator: ' ') ?> руб.
+                        </p>
+                        <p class="card-text">
+                            Автор:
+                            <a
+                                href="<?= Url::to(['user/profile', 'id' => $lot->user_id]) ?>"
+                            ><?= Html::encode($lot->user->name) ?></a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -45,7 +52,12 @@ const USER_REASON_ID = 1;
                 <div class="card">
                     <div class="card-header text-body-secondary"> <?= Html::encode($lot->deadline) ?></div>
                     <div class="card-body">
-                        <p class="card-text">Текущая цена:<br><span class="fs-3 fw-bold"><?= $current_price ?> руб.</span></p>
+                        <p class="card-text">
+                            Текущая цена:<br>
+                            <span class="fs-3 fw-bold"><?= $current_price ?> руб.</span><br>
+                            <span class="d-block mt-2 fs-6">Мин. ставка: <?= Html::encode($min_summary) ?> руб.</span>
+                            <span class="d-block fs-6">Макс. ставка: <?= Html::encode($max_summary) ?> руб.</span>
+                        </p>
 
                         <?php if ($lot->user_id !== Yii::$app->user->id): ?>
                             <?php $form = ActiveForm::begin([
@@ -68,7 +80,7 @@ const USER_REASON_ID = 1;
                                 ],
                             ]); ?>
 
-                                <?= $form->field($model, 'summary')->input('number', ['placeholder' => "Мин. ставка: $min_summary"]) ?>
+                                <?= $form->field($model, 'summary')->input('number', ['placeholder' => 'Здесь будет число']) ?>
                                 <?= Html::submitInput('Сделать', ['class' => 'btn btn-primary']) ?>
 
                             <?php ActiveForm::end(); ?>

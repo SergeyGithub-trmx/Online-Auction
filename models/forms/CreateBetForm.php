@@ -12,6 +12,8 @@ class CreateBetForm extends Model
     public $lot_id;
     public $summary;
 
+    const ACCEPTABLE_BET_RANGE = 5000;
+
     public function rules(): array
     {
         return [
@@ -43,7 +45,7 @@ class CreateBetForm extends Model
             $lot = Lot::findOne($this->lot_id);
 
             if ($this->user_id === $lot->user_id) {
-                $this->addError($attr, 'Нельзя делать ставку на свой лот.');
+                $this->addError($attr, 'Нельзя сделать ставку на свой лот.');
             }
         }
     }
@@ -60,7 +62,9 @@ class CreateBetForm extends Model
             }
 
             if ($this->summary < $min_summary) {
-                $this->addError($attr, 'Нельзя делать ставку ниже минимальной.');
+                $this->addError($attr, 'Нельзя сделать ставку ниже минимальной.');
+            } elseif ($this->summary > ($min_summary + self::ACCEPTABLE_BET_RANGE)) {
+                $this->addError($attr, 'Нельзя сделать ставку выше максимальной.');
             }
         }
     }
