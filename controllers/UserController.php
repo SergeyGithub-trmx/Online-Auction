@@ -26,7 +26,7 @@ class UserController extends BaseController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['logout', 'profile2'],
+                        'actions' => ['logout', 'profile'],
                         'roles' => ['@'],
                     ],
                 ],

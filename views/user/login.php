@@ -3,12 +3,9 @@
 /** @var yii\web\View $this */
 /** @var app\models\forms\LoginForm $model */
 
-use app\assets\LoginAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-
-LoginAsset::register($this);
 
 $this->title = Yii::$app->name . ' | Вход';
 

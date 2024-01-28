@@ -10,7 +10,6 @@ use yii\web\Controller;
 
 class BaseController extends Controller
 {
-    public ?User $user;
     public $categories;
     public $search_model;
 
@@ -21,7 +20,6 @@ class BaseController extends Controller
         }
 
         $this->layout = 'main';
-        $this->user = User::findOne(Yii::$app->user->id);
         $this->categories = Category::find()->all();
         $this->search_model = new SearchLotForm();
 

@@ -3,13 +3,11 @@
 /** @var app\models\Category[] $categories */
 /** @var app\models\forms\CreateLotForm $model */
 
-use app\assets\CreateLotAsset;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
-CreateLotAsset::register($this);
 $this->title = Yii::$app->name . ' | Добавить лот';
 
 ?>

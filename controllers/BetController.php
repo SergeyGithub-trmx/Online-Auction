@@ -6,6 +6,7 @@ use app\models\Bet;
 use app\models\Lot;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
+use Yii;
 
 class BetController extends BaseController
 {
@@ -27,7 +28,7 @@ class BetController extends BaseController
 
     public function actionList(): string
     {
-        $query = Bet::find()->where(['user_id' => $this->user->id]);
+        $query = Bet::find()->where(['user_id' => Yii::$app->user->id]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $pages->setPageSize(7);

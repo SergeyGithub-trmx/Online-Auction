@@ -84,7 +84,7 @@ class LotController extends BaseController
 
         if (Yii::$app->request->isPost) {
             $model->load(Yii::$app->request->post());
-            $model->user_id = $this->user->id;
+            $model->user_id = Yii::$app->user->id;
             $model->lot_id = $lot_id;
 
             if ($model->validate()) {

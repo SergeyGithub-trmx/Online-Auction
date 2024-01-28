@@ -22,6 +22,11 @@ class SiteController extends BaseController
                         'actions' => ['index', 'category', 'search'],
                         'roles' => ['@'],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['error'],
+                        'roles' => ['?', '@'],
+                    ]
                 ],
             ],
         ];
@@ -86,5 +91,11 @@ class SiteController extends BaseController
             'lots' => $lots,
             'pages' => $pages
         ]);
+    }
+
+    public function actionError(): string
+    {
+        $this->layout = 'error';
+        return $this->render('error');
     }
 }

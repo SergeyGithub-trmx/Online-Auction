@@ -2,35 +2,61 @@
 
 /** @var yii\web\View $this */
 
-use app\assets\ProfileAsset;
+use yii\helpers\Html;
 
-ProfileAsset::register($this);
 $this->title = Yii::$app->name . ' | Профиль';
 
+$accordion_items = [
+    [
+        'label' => 'Зарегистрирован',
+        'body' => '[registration time]'
+    ],
+    [
+        'label' => 'Последняя активность',
+        'body' => '[last seen time]'
+    ],
+    [
+        'label' => 'Страна',
+        'body' => '[country here]'
+    ],
+    [
+        'label' => 'Город',
+        'body' => '[town/city here]'
+    ],
+    [
+        'label' => 'Рейтинг',
+        'body' => '[rating here]'
+    ]
+];
 
 ?>
-<div class="user-card">
-    <div class="main-info">
-        <p>Пользователь сайта</p>
-        <div class="avatar"></div>
+<section class="section-min-height section-py">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1 class="fs-2">Профиль</h1>
+                <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
+
+                    <?php foreach ($accordion_items as $i => $item): ?>
+                        <div class="accordion-item border-secondary">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button collapsed fw-bold"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapse<?= $i ?>"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapse<?= $i ?>"
+                                ><?= Html::encode($item['label']) ?></button>
+                            </h2>
+                            <div id="panelsStayOpen-collapse<?= $i ?>" class="accordion-collapse collapse">
+                                <div class="accordion-body"><?= Html::encode($item['body']) ?></div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="profile-history">
-        <p>История профиля</p>
-        <hr>
-
-        <p>Зарегистрирован: [registration time]</p>
-        <hr>
-
-        <p>Последняя активность: [last seen time]</p>
-        <hr>
-
-        <p>Страна: [country here]</p>
-        <hr>
-
-        <p>Город: [town/city here]</p>
-        <hr>
-
-        <p>Рейтинг пользователя: [user rating here]</p>
-        <hr>
-    </div>
-</div>
+</section>

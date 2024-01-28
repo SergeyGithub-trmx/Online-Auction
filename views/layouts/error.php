@@ -3,13 +3,9 @@
 /** @var yii\web\View $this */
 /** @var string $content */
 
-use app\assets\LayoutAsset;
 use yii\helpers\Html;
 
-LayoutAsset::register($this);
 $this->registerCsrfMetaTags();
-$user = Yii::$app->user->identity ?? null;
-$categories = $this->context->categories;
 
 ?>
 <?php $this->beginPage() ?>
@@ -17,21 +13,34 @@ $categories = $this->context->categories;
 <html lang="<?= Yii::$app->language ?>">
     <head>
         <meta charset="<?= Yii::$app->charset ?>">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title><?= Html::encode($this->title) ?></title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #F0F8FF;
+                font-family: Russia;
+            }
+
+            h1 {
+                font-size: 64px;
+            }
+            p {
+                font-size: 24px;
+            }
+        </style>
         <?php $this->head() ?>
     </head>
     <body>
         <?php $this->beginBody() ?>
-        
-        <?= $this->render('_main-header.php', ['user' => $user]) ?>
-        <main><?= $content ?></main>
-        <?= $this->render('_main-footer.php', ['categories' => $categories]) ?>
-        <script src="https://kit.fontawesome.com/9f99803486.js" crossorigin="anonymous"></script>
+
+        <?= $content ?>
 
         <?php $this->endBody() ?>
     </body>

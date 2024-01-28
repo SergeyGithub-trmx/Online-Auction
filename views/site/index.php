@@ -4,11 +4,9 @@
 /** @var app\models\Lot[] $lots */
 /** @var yii\data\Pagination $pages */
 
-use app\assets\IndexAsset;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
-IndexAsset::register($this);
 $this->title = Yii::$app->name . ' | Главная';
 
 ?>

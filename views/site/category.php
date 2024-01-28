@@ -5,12 +5,10 @@
 /** @var yii\data\Pagination $pages */
 /** @var string $category */
 
-use app\assets\IndexAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
-IndexAsset::register($this);
 $category = $this->context->category;
 $this->title = Yii::$app->name . ' | ' . Html::encode($category->name);
 

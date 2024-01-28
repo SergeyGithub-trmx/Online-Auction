@@ -3,12 +3,9 @@
 /** @var yii\web\View $this */
 /** @var app\models\forms\RegisterForm $model */
 
-use app\assets\RegisterAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-
-RegisterAsset::register($this);
 
 $this->title = Yii::$app->name . ' | Регистрация';
 

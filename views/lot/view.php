@@ -8,12 +8,10 @@
 /** @var string $min_summary */
 /** @var string $max_summary */
 
-use app\assets\LotAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
-LotAsset::register($this);
 $this->title = Yii::$app->name . ' | ' . Html::encode($lot->name);
 
 ?>
@@ -42,6 +40,7 @@ $this->title = Yii::$app->name . ' | ' . Html::encode($lot->name);
                         <p class="card-text">
                             Автор:
                             <a
+                                class="text-decoration-none"
                                 href="<?= Url::to(['user/profile', 'id' => $lot->user_id]) ?>"
                             ><?= Html::encode($lot->user->name) ?></a>
                         </p>
@@ -50,7 +49,7 @@ $this->title = Yii::$app->name . ' | ' . Html::encode($lot->name);
             </div>
             <div class="col-4">
                 <div class="card">
-                    <div class="card-header text-body-secondary"> <?= Html::encode($lot->deadline) ?></div>
+                    <div class="card-header text-body-secondary"> <?= date('d.m.Y', strtotime($lot->deadline)) ?></div>
                     <div class="card-body">
                         <p class="card-text">
                             Текущая цена:<br>
@@ -80,7 +79,7 @@ $this->title = Yii::$app->name . ' | ' . Html::encode($lot->name);
                                 ],
                             ]); ?>
 
-                                <?= $form->field($model, 'summary')->input('number', ['placeholder' => 'Здесь будет число']) ?>
+                                <?= $form->field($model, 'summary')->input('number', ['placeholder' => 'Введите число']) ?>
                                 <?= Html::submitInput('Сделать', ['class' => 'btn btn-primary']) ?>
 
                             <?php ActiveForm::end(); ?>
@@ -102,7 +101,19 @@ $this->title = Yii::$app->name . ' | ' . Html::encode($lot->name);
                             <tr>
                                 <td><?= $bet->user->name ?></td>
                                 <td><?= number_format($bet->summary, thousands_separator: ' ') ?></td>
-                                <td><?= date('m.d.Y в H:i', strtotime($bet->dt_add)) ?></td>
+                                <td>
+<!--//                                    --> //=
+////                                    if () {
+////                                        date('s секунд назад', strtotime($bet->dt_add));
+////                                    } elseif () {
+////                                        date('i мин назад', strtotime($bet->dt_add));
+////                                    } elseif () {
+////                                        date('h ч i мин назад', strtotime($bet->dt_add));
+////                                    } else {
+////                                        date('d.m.Y в h:i:s', strtotime($bet->dt_add));
+////                                    }
+////
+                                </td>
                             </tr>
                         <?php endforeach; ?>
 

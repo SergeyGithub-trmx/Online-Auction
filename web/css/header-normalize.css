@@ -1,0 +1,9 @@
+.nav-item.active .nav-link,
+.dropdown-menu > li.active .dropdown-item {
+    color: #fff;
+}
+
+.dropdown-menu > li.active .dropdown-item {
+    text-decoration: none;
+    background-color: #0d6efd;
+}

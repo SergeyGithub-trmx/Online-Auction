@@ -25,7 +25,7 @@ $config = [
             'loginUrl' => 'login',
         ],
         'errorHandler' => [
-            // 'errorAction' => 'site/error',
+            'errorAction' => 'site/error',
         ],
         'mailer' => [
             'class' => \yii\symfonymailer\Mailer::class,

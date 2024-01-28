@@ -6,11 +6,9 @@
 /** @var string $req */
 /** @var app\models\User $this->context->user */
 
-use app\assets\IndexAsset;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
-IndexAsset::register($this);
 $this->title = Yii::$app->name . ' | Поиск';
 $user = $this->context->user;
 
