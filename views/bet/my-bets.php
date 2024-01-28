@@ -5,12 +5,10 @@
 /** @var app\models\Bet $bets */
 /** @var yii\data\Pagination $pages */
 
-use app\assets\BetAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
-BetAsset::register($this);
 $this->registerCss('body {background-color: #F0F8FF}');
 $this->title = Yii::$app->name . ' | Мои ставки';
 
