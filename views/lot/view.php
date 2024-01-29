@@ -102,6 +102,7 @@ $this->title = Yii::$app->name . ' | ' . Html::encode($lot->name);
                                 <td><?= $bet->user->name ?></td>
                                 <td><?= number_format($bet->summary, thousands_separator: ' ') ?></td>
                                 <td>
+                                    <?= date('d.m.Y в h:i:s', strtotime($bet->dt_add)); ?>
 <!--//                                    --> //=
 ////                                    if () {
 ////                                        date('s секунд назад', strtotime($bet->dt_add));
